@@ -70,6 +70,10 @@ Overwrite Model/service
 
 ```
 
+For PHPUnit check use below commands
+
+    ./vendor/bin/phpunit
+    ./vendor/bin/phpunit --testdox
 
 
 Convert CSV/JSON/XML
