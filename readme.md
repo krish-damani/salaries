@@ -20,8 +20,7 @@ Now you can use like below
     use Salaries\Process;
     use Salaries\Service;
 
-    //you can overwrite service if you want to
-    $service = new Service();
+
 
     $process = new Process($service);
 
@@ -54,5 +53,23 @@ Manually seting options
     $weekenddays = $process->getWeekendDays();
 
 ```
+
+Overwrite Model/service
+
+```php
+    //if you want to Overwrite model like below
+     //you can overwrite service if you want to
+    $service = new Service();
+    $process = new Process();
+
+    //service like below
+    $process->setService($service);
+
+    //model like below
+    $process->setModel($model);
+
+```
+
+
 
 Convert CSV/JSON/XML

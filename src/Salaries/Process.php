@@ -29,9 +29,11 @@ class Process
     ];
     private $bonus_day = 15;
     private $service;
-    public function __construct(Service $service)
+    private $model;
+    public function __construct()
     {
-        $this->service = $service;
+        $this->service = new service();
+        $this->model = new Model();
         Carbon::setWeekendDays($this->weekdays);
     }
 
@@ -45,7 +47,7 @@ class Process
         $month = Carbon::createFromDate($result['year'], array_flip($this->months)[$result['month']], 1);
         $data = $this->service->process($month, $this->bonus_day);
 
-        return new Model(['month' => $result['month'] . '-' . $result['year']] + $data);
+        return $this->model->setFields(['month' => $result['month'] . '-' . $result['year']] + $data);
     }
 
     public function yearly(int $year): array
@@ -85,4 +87,13 @@ class Process
         return $this->bonus_day;
     }
 
+    public function setService(Service $service)
+    {
+        $this->service = $service;
+    }
+
+    public function setModel(Model $model)
+    {
+        $this->model = $model;
+    }
 }
