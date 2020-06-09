@@ -1,0 +1,23 @@
+{
+    "name": "dinesh/salaries",
+    "description": "command-line utility to help a fictional company determine the dates they need to pay salaries to their sales department",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dinesh Rabara",
+            "email": "dinesh.rabara@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-0": {
+            "Salaries": "src/"
+        }
+    }
+}
