@@ -4,7 +4,6 @@ namespace Salaries;
 
 class Service
 {
-
     public function process($month, $bonus_day)
     {
         $bonus_date = $month->copy()->addDays($bonus_day);

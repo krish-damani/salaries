@@ -4,7 +4,7 @@ namespace Salaries;
 
 class Model
 {
-    private $fields = ['month', 'payment_date', 'bonus_date'];
+    public $month, $payment_date, $bonus_date;
 
     public function setFields(array $values)
     {
