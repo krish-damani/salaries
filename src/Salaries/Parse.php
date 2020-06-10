@@ -2,11 +2,9 @@
 
 namespace Salaries;
 
-use SimpleXMLElement;
-
 trait Parse
 {
-    public $data;
+    public $data = [];
 
     public function toArray(): array
     {
