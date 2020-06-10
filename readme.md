@@ -91,17 +91,5 @@ Convert CSV/JSON/Array
     $result = $process->yearly(2020)->saveCSV('/home/dns/code/open/salaries/yearly.csv');
 
 ```
-month,payment_date,pre_month_bonus_date
-January-2020,31-01-2020,15-01-2020
-February-2020,28-02-2020,19-02-2020
-March-2020,31-03-2020,18-03-2020
-April-2020,30-04-2020,15-04-2020
-May-2020,29-05-2020,15-05-2020
-June-2020,30-06-2020,15-06-2020
-July-2020,31-07-2020,15-07-2020
-August-2020,31-08-2020,19-08-2020
-September-2020,30-09-2020,15-09-2020
-October-2020,30-10-2020,15-10-2020
-November-2020,30-11-2020,18-11-2020
-December-2020,31-12-2020,15-12-2020
 
+(https://github.com/dineshrabara/salaries/blob/master/yearly.csv)
