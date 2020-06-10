@@ -29,7 +29,7 @@ Now you can use like below
     $result = $process->yearly(2020)->toArray();
 
     //if you want to get monthly then like below
-    $result = $process->monthly('February-2020')->toArray();
+    $result = $process->monthly('February',2020)->toArray();
 
 ```
 Manually seting options for months/bonusday/weekendday/dateformat
@@ -81,13 +81,11 @@ For PHPUnit check use below commands
     ./vendor/bin/phpunit --testdox
 
 
-Convert CSV/JSON/Array
+Convert CSV/Array
 
 ```php
     //return process month with model
     $result = $process->yearly(2020)->toArray();
-    //or
-    $result = $process->yearly(2020)->toJson();
     //or
     $result = $process->yearly(2020)->saveCSV('/home/dns/code/open/salaries/yearly.csv');
 

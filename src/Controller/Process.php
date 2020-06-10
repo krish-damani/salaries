@@ -3,7 +3,6 @@
 namespace Salaries\Controller;
 
 use Carbon\Carbon;
-use Exception;
 use Salaries\Model\Salary as Model;
 use Salaries\Service\Parse;
 use Salaries\Service\Service;
@@ -46,19 +45,15 @@ class Process
      * monthly
      *
      * @param  string $name
+     * @param  int $year
      * @return Model
      */
-    public function monthly(string $name): Model
+    public function monthly(string $monthName, int $year): Model
     {
-        preg_match('#(?<month>[A-Za-z]+)-(?<year>[0-9]{4})#', $name, $result);
-
-        if (empty($result['month']) || !in_array($result['month'], $this->months)) {
-            throw new Exception("Month name not found :" . $name, 1);
-        }
-        $month = Carbon::createFromDate($result['year'], array_flip($this->months)[$result['month']], 1);
+        $month = Carbon::createFromDate($year, array_flip($this->months)[$monthName], 1);
         $data = $this->service->process($month, $this->bonusDay);
         $model = clone $this->model;
-        return $model->setFields(['month' => $result['month'] . '-' . $result['year']] + $data);
+        return $model->setFields(['month' => $monthName . '-' . $year] + $data);
     }
 
     /**
@@ -71,7 +66,7 @@ class Process
     {
         $this->data = [];
         foreach ($this->months as $month) {
-            $this->data[] = $this->monthly($month . '-' . $year);
+            $this->data[] = $this->monthly($month, $year);
         }
         return $this;
     }
