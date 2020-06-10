@@ -26,10 +26,10 @@ Now you can use like below
     $process = new Process($service);
 
     //return process month with model
-    $result = $process->yearly(2020)->toArray();
+    $result = $process->prepareYearlyDates(2020)->toArray();
 
     //if you want to get monthly then like below
-    $result = $process->monthly('February',2020)->toArray();
+    $result = $process->prepareMonthlyDate('February',2020)->toArray();
 
 ```
 Manually seting options for months/bonusday/weekendday/dateformat

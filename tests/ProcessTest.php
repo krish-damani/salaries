@@ -12,9 +12,9 @@ class ProcessTest extends TestCase
     {
         $this->process = new Process();
     }
-    public function testProcessMonthly()
+    public function testProcessMonthlyDate()
     {
-        $result = $this->process->monthly('February',2020)->toArray();
+        $result = $this->process->prepareMonthlyDate('February', 2020)->toArray();
 
         $this->assertSame(
             [$result['month'], $result['paymentDate']->format('Y-m-d'), $result['bonusDate']->format('Y-m-d')],
@@ -22,9 +22,9 @@ class ProcessTest extends TestCase
         );
     }
 
-    public function testProcessYearly()
+    public function testProcessYearlyDates()
     {
-        $result = $this->process->yearly('2020')->toArray();
+        $result = $this->process->prepareYearlyDates('2020')->toArray();
 
         $this->assertSame(
             count($result),
@@ -59,7 +59,7 @@ class ProcessTest extends TestCase
             $days
         );
     }
-    public function testSetWeekEndDays()
+    public function testSetWeekendDays()
     {
         $weekEndDays = [
             Carbon::SUNDAY,

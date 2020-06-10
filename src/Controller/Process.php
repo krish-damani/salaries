@@ -42,13 +42,13 @@ class Process
     }
 
     /**
-     * monthly
+     * Prepare Monthly Date
      *
      * @param  string $name
      * @param  int $year
      * @return Model
      */
-    public function monthly(string $monthName, int $year): Model
+    public function prepareMonthlyDate(string $monthName, int $year): Model
     {
         $month = Carbon::createFromDate($year, array_flip($this->months)[$monthName], 1);
         $data = $this->service->process($month, $this->bonusDay);
@@ -57,16 +57,16 @@ class Process
     }
 
     /**
-     * yearly
+     * Prepare Yearly Dates
      *
      * @param  int $year
      * @return self
      */
-    public function yearly(int $year): self
+    public function prepareYearlyDates(int $year): self
     {
         $this->data = [];
         foreach ($this->months as $month) {
-            $this->data[] = $this->monthly($month, $year);
+            $this->data[] = $this->prepareMonthlyDate($month, $year);
         }
         return $this;
     }
