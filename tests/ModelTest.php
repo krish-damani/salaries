@@ -10,8 +10,6 @@ class ModelTest extends TestCase
         $model = new Model();
         $data = ['month' => 'January-2020', 'payment_date' => Carbon::now(), 'bonus_date' => Carbon::now()];
         $model->setFields($data);
-        foreach ($data as $key => $value) {
-            $this->assertSame($model->$key, $data[$key]);
-        }
+        $this->assertSame($model->toArray(), $data);
     }
 }

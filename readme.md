@@ -25,10 +25,10 @@ Now you can use like below
     $process = new Process($service);
 
     //return process month with model
-    $result = $process->yearly(2020)
+    $result = $process->yearly(2020)->toArray();
 
     //if you want to get monthly then like below
-    $result = $process->monthly('February-2020')
+    $result = $process->monthly('February-2020')->toArray();
 
 ```
 Manually seting options
@@ -76,4 +76,4 @@ For PHPUnit check use below commands
     ./vendor/bin/phpunit --testdox
 
 
-Convert CSV/JSON/XML
+Convert CSV/JSON/Array

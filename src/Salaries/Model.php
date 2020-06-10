@@ -2,14 +2,16 @@
 
 namespace Salaries;
 
+use Salaries\Parse;
+
 class Model
 {
-    public $month, $payment_date, $bonus_date;
+    use parse;
 
     public function setFields(array $values): self
     {
         foreach ($values as $key => $value) {
-            $this->$key = $value;
+            $this->data[$key] = $value;
         }
         return $this;
     }

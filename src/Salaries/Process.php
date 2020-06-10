@@ -5,10 +5,12 @@ namespace Salaries;
 use Carbon\Carbon;
 use Exception;
 use Salaries\Model;
+use Salaries\Parse;
 use Salaries\Service;
 
 class Process
 {
+    use parse;
     private $months = [
         1 => 'January',
         2 => 'February',
@@ -30,6 +32,7 @@ class Process
     private $bonus_day = 15;
     private $service;
     private $model;
+
     public function __construct()
     {
         $this->service = new service();
@@ -50,13 +53,13 @@ class Process
         return $this->model->setFields(['month' => $result['month'] . '-' . $result['year']] + $data);
     }
 
-    public function yearly(int $year): array
+    public function yearly(int $year): self
     {
-        $result = [];
+        $this->data = [];
         foreach ($this->months as $month) {
-            $result[] = self::monthly($month . '-' . $year);
+            $this->data[] = self::monthly($month . '-' . $year);
         }
-        return $result;
+        return $this;
     }
     /**
      * get Weekend Days

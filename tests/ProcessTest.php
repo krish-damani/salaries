@@ -14,17 +14,17 @@ class ProcessTest extends TestCase
     }
     public function test_process_monthly()
     {
-        $result = $this->process->monthly('February-2020');
+        $result = $this->process->monthly('February-2020')->toArray();
 
         $this->assertSame(
-            [$result->month, $result->payment_date->format('Y-m-d'), $result->bonus_date->format('Y-m-d')],
+            [$result['month'], $result['payment_date']->format('Y-m-d'), $result['bonus_date']->format('Y-m-d')],
             ['February-2020', '2020-03-02', '2020-02-19']
         );
     }
 
     public function test_process_yearly()
     {
-        $result = $this->process->yearly('2020');
+        $result = $this->process->yearly('2020')->toArray();
 
         $this->assertSame(
             count($result),

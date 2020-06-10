@@ -26,7 +26,7 @@ $process = new Process();
 // $process->setWeekendDays([Carbon::SUNDAY]);
 // print_r($process->getWeekendDays());
 
-print_r($process->monthly('February-2020'));
+print_r($process->monthly('February-2020')->toJson());
 // print_r($process->yearly(2020)[0]->payment_date);
-// print_r($process->yearly(2020));
+// print_r($process->yearly(2020)->toArray());
 exit;
