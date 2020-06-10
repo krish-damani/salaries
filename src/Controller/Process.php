@@ -3,7 +3,7 @@
 namespace Salaries\Controller;
 
 use Carbon\Carbon;
-use Salaries\Model\Salary as Model;
+use Salaries\Model\Salary;
 use Salaries\Service\Parse;
 use Salaries\Service\Service;
 
@@ -33,10 +33,10 @@ class Process
     private $model;
     private $dateFormat = 'd-m-Y';
 
-    public function __construct()
+    public function __construct(Service $service, Salary $model)
     {
-        $this->service = new service();
-        $this->model = new Model();
+        $this->service = $service;
+        $this->model = $model;
         Carbon::setWeekendDays($this->weekEndDays);
         Carbon::setToStringFormat($this->dateFormat);
     }
@@ -46,9 +46,9 @@ class Process
      *
      * @param  string $name
      * @param  int $year
-     * @return Model
+     * @return Salary
      */
-    public function prepareMonthlyDate(string $monthName, int $year): Model
+    public function prepareMonthlyDate(string $monthName, int $year): Salary
     {
         $month = Carbon::createFromDate($year, array_flip($this->months)[$monthName], 1);
         $data = $this->service->process($month, $this->bonusDay);

@@ -22,8 +22,10 @@ Now you can use like below
 ```php
 
     use Salaries\Constroller\Process;
+    use Salaries\Model\Salary;
+    use Salaries\Service\Service;
 
-    $process = new Process($service);
+    $process = new Process(new Service(), new Salary());
 
     //return process month with model
     $result = $process->prepareYearlyDates(2020)->toArray();
