@@ -29,7 +29,7 @@ class Process
         Carbon::SATURDAY,
         Carbon::SUNDAY,
     ];
-    private $bonus_day = 15;
+    private $bonus_day = 14;
     private $service;
     private $model;
 

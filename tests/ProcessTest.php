@@ -18,7 +18,7 @@ class ProcessTest extends TestCase
 
         $this->assertSame(
             [$result['month'], $result['payment_date']->format('Y-m-d'), $result['bonus_date']->format('Y-m-d')],
-            ['February-2020', '2020-03-02', '2020-02-19']
+            ['February-2020', '2020-02-28', '2020-02-19']
         );
     }
 

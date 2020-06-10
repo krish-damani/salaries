@@ -12,7 +12,7 @@ class Service
         $payment_date = $month->copy()->endOfMonth();
 
         if ($payment_date->isWeekend()) {
-            $payment_date = $payment_date->next('Monday');
+            $payment_date = $payment_date->previous('Friday');
         }
         if ($bonus_date->isWeekend()) {
             $bonus_date = $bonus_date->next('Wednesday');
