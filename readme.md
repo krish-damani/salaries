@@ -14,6 +14,10 @@ Next, update Composer from the Terminal:
 
 Once this operation completes.
 
+For Console Run
+
+    php tests/test.php
+
 Now you can use like below
 ```php
 
@@ -108,5 +112,3 @@ Convert CSV/JSON/Array
 |October-2020|30-10-2020|15-10-2020|
 |November-2020|30-11-2020|18-11-2020|
 |December-2020|31-12-2020|15-12-2020|
-
-
