@@ -2,6 +2,8 @@
 use Carbon\carbon;
 use PHPUnit\Framework\TestCase;
 use Salaries\Controller\Process;
+use Salaries\Model\Salary;
+use Salaries\Service\Service;
 
 class ProcessTest extends TestCase
 {
@@ -10,7 +12,7 @@ class ProcessTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->process = new Process();
+        $this->process = new Process(new Service(), new Salary());
     }
     public function testProcessMonthlyDate()
     {
