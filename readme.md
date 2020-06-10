@@ -83,9 +83,9 @@ Convert CSV/Array
 
 ```php
     //return process month with model
-    $result = $process->yearly(2020)->toArray();
+    $result = $process->prepareYearlyDates(2020)->toArray();
     //or
-    $result = $process->yearly(2020)->saveCSV('/home/dns/code/open/salaries/yearly.csv');
+    $result = $process->prepareYearlyDates(2020)->saveCSV('/home/dns/code/open/salaries/yearly.csv');
 
 ```
 
