@@ -17,7 +17,7 @@ class ProcessTest extends TestCase
         $result = $this->process->monthly('February-2020')->toArray();
 
         $this->assertSame(
-            [$result['month'], $result['payment_date']->format('Y-m-d'), $result['bonus_date']->format('Y-m-d')],
+            [$result['month'], $result['payment_date']->format('Y-m-d'), $result['pre_month_bonus_date']->format('Y-m-d')],
             ['February-2020', '2020-02-28', '2020-02-19']
         );
     }
@@ -70,6 +70,17 @@ class ProcessTest extends TestCase
         $this->assertSame(
             $result,
             $weekenddays
+        );
+    }
+    public function test_set_date_format()
+    {
+        $date_format = 'Y-m-d';
+        $this->process->setDateFormat($date_format);
+        $result = $this->process->getDateFormat();
+
+        $this->assertSame(
+            $result,
+            $date_format
         );
     }
 }

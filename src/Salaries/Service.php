@@ -18,6 +18,6 @@ class Service
             $bonus_date = $bonus_date->next('Wednesday');
         }
 
-        return ['payment_date' => $payment_date, 'bonus_date' => $bonus_date];
+        return ['payment_date' => $payment_date, 'pre_month_bonus_date' => $bonus_date];
     }
 }

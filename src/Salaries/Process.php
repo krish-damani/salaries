@@ -32,12 +32,14 @@ class Process
     private $bonus_day = 14;
     private $service;
     private $model;
+    private $date_format = 'd-m-Y';
 
     public function __construct()
     {
         $this->service = new service();
         $this->model = new Model();
         Carbon::setWeekendDays($this->weekdays);
+        Carbon::setToStringFormat($this->date_format);
     }
 
     public function monthly(string $name): Model
@@ -98,5 +100,13 @@ class Process
     public function setModel(Model $model)
     {
         $this->model = $model;
+    }
+    public function setDateFormat(string $date_format)
+    {
+        $this->date_format = $date_format;
+    }
+    public function getDateFormat(): string
+    {
+        return $this->date_format;
     }
 }

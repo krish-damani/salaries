@@ -31,7 +31,7 @@ Now you can use like below
     $result = $process->monthly('February-2020')->toArray();
 
 ```
-Manually seting options
+Manually seting options for months/bonusday/weekendday/dateformat
 
 ```php
     //if you want to process only selected months then like below
@@ -51,6 +51,10 @@ Manually seting options
     //if you want to set weekend days
     $process->setWeekendDays([Carbon::SUNDAY]);
     $weekenddays = $process->getWeekendDays();
+
+    //set output date format default d-m-Y
+    $process->setDateFormat('Y-m-d');
+    $date_format = $process->getDateFormat();
 
 ```
 
