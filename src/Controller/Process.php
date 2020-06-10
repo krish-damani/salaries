@@ -85,10 +85,10 @@ class Process
     /**
      * setService
      *
-     * @param  Service $service
+     * @param  new Service $service
      * @return void
      */
-    public function setService(Service $service)
+    public function setService($service)
     {
         $this->service = $service;
     }
@@ -96,10 +96,10 @@ class Process
     /**
      * setModel
      *
-     * @param  Model $model
+     * @param  New Model $model
      * @return void
      */
-    public function setModel(Model $model)
+    public function setModel($model)
     {
         $this->model = $model;
     }
