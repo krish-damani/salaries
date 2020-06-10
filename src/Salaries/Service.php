@@ -2,9 +2,11 @@
 
 namespace Salaries;
 
+use Carbon\Carbon;
+
 class Service
 {
-    public function process($month, $bonus_day)
+    public function process(Carbon $month, int $bonus_day): array
     {
         $bonus_date = $month->copy()->addDays($bonus_day);
         $payment_date = $month->copy()->endOfMonth();

@@ -6,7 +6,7 @@ class Model
 {
     public $month, $payment_date, $bonus_date;
 
-    public function setFields(array $values)
+    public function setFields(array $values): self
     {
         foreach ($values as $key => $value) {
             $this->$key = $value;

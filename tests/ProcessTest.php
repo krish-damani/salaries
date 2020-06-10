@@ -5,10 +5,16 @@ use Salaries\Process;
 
 class ProcessTest extends TestCase
 {
+
+    protected $process;
+
+    protected function setUp(): void
+    {
+        $this->process = new Process();
+    }
     public function test_process_monthly()
     {
-        $process = new Process();
-        $result = $process->monthly('February-2020');
+        $result = $this->process->monthly('February-2020');
 
         $this->assertSame(
             [$result->month, $result->payment_date->format('Y-m-d'), $result->bonus_date->format('Y-m-d')],
@@ -18,9 +24,7 @@ class ProcessTest extends TestCase
 
     public function test_process_yearly()
     {
-        $process = new Process();
-
-        $result = $process->yearly('2020');
+        $result = $this->process->yearly('2020');
 
         $this->assertSame(
             count($result),
@@ -29,7 +33,6 @@ class ProcessTest extends TestCase
     }
     public function test_set_month()
     {
-        $process = new Process();
         $months = [
             1 => 'January',
             2 => 'February',
@@ -37,8 +40,8 @@ class ProcessTest extends TestCase
             4 => 'April',
             5 => 'May',
         ];
-        $process->setMonths($months);
-        $result = $process->getMonths();
+        $this->process->setMonths($months);
+        $result = $this->process->getMonths();
 
         $this->assertSame(
             $result,
@@ -47,10 +50,9 @@ class ProcessTest extends TestCase
     }
     public function test_set_bonus_day()
     {
-        $process = new Process();
         $days = 17;
-        $process->setBonusDay($days);
-        $result = $process->getBonusDay();
+        $this->process->setBonusDay($days);
+        $result = $this->process->getBonusDay();
 
         $this->assertSame(
             $result,
@@ -59,12 +61,11 @@ class ProcessTest extends TestCase
     }
     public function test_set_weekenddays()
     {
-        $process = new Process();
         $weekenddays = [
             Carbon::SUNDAY,
         ];
-        $process->setWeekendDays($weekenddays);
-        $result = $process->getWeekendDays();
+        $this->process->setWeekendDays($weekenddays);
+        $result = $this->process->getWeekendDays();
 
         $this->assertSame(
             $result,
