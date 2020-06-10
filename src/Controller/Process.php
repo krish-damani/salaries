@@ -2,7 +2,7 @@
 
 namespace Salaries\Controller;
 
-use Carbon\Carbon;
+use DateTime;
 use Salaries\Model\Salary;
 use Salaries\Service\Parse;
 use Salaries\Service\Service;
@@ -24,21 +24,13 @@ class Process
         11 => 'November',
         12 => 'December',
     ];
-    private $weekEndDays = [
-        Carbon::SATURDAY,
-        Carbon::SUNDAY,
-    ];
-    private $bonusDay = 14;
     private $service;
     private $model;
-    private $dateFormat = 'd-m-Y';
 
     public function __construct(Service $service, Salary $model)
     {
         $this->service = $service;
         $this->model = $model;
-        Carbon::setWeekendDays($this->weekEndDays);
-        Carbon::setToStringFormat($this->dateFormat);
     }
 
     /**
@@ -50,8 +42,8 @@ class Process
      */
     public function prepareMonthlyDate(string $monthName, int $year): Salary
     {
-        $month = Carbon::createFromDate($year, array_flip($this->months)[$monthName], 1);
-        $data = $this->service->process($month, $this->bonusDay);
+        $month = DateTime::createFromFormat('Y-m-d', $year . '-' . array_flip($this->months)[$monthName] . '-1');
+        $data = $this->service->process($month);
         $model = clone $this->model;
         return $model->setFields(['month' => $monthName . '-' . $year] + $data);
     }
@@ -71,25 +63,6 @@ class Process
         return $this;
     }
     /**
-     * getWeekendDays
-     *
-     * @return array
-     */
-    public function getWeekendDays(): array
-    {
-        return $this->weekEndDays;
-    }
-    /**
-     * setWeekendDays
-     *
-     * @param  array $weekEndDays
-     * @return void
-     */
-    public function setWeekendDays(array $weekEndDays)
-    {
-        $this->weekEndDays = $weekEndDays;
-    }
-    /**
      * setMonths
      *
      * @param  array $months
@@ -107,25 +80,6 @@ class Process
     public function getMonths(): array
     {
         return $this->months;
-    }
-    /**
-     * setBonusDay
-     *
-     * @param  int $bonusDay
-     * @return void
-     */
-    public function setBonusDay(int $bonusDay)
-    {
-        $this->bonusDay = $bonusDay;
-    }
-    /**
-     * getBonusDay
-     *
-     * @return int
-     */
-    public function getBonusDay(): int
-    {
-        return $this->bonusDay;
     }
 
     /**
@@ -148,24 +102,5 @@ class Process
     public function setModel(Model $model)
     {
         $this->model = $model;
-    }
-    /**
-     * setDateFormat
-     *
-     * @param  string $dateFormat
-     * @return void
-     */
-    public function setDateFormat(string $dateFormat)
-    {
-        $this->dateFormat = $dateFormat;
-    }
-    /**
-     * getDateFormat
-     *
-     * @return string
-     */
-    public function getDateFormat(): string
-    {
-        return $this->dateFormat;
     }
 }

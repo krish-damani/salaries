@@ -48,16 +48,12 @@ Manually seting options for months/bonusday/weekendday/dateformat
     $months = $process->getMonths();
 
     //if you want to set Bonus Day of the Month
-    $process->setBonusDay(14);
-    $bonusdays = $process->getBonusDay();
-
-    //if you want to set weekend days
-    $process->setWeekendDays([Carbon::SUNDAY]);
-    $weekenddays = $process->getWeekendDays();
+    $service->setBonusDay(14);
+    $bonusdays = $service->getBonusDay();
 
     //set output date format default d-m-Y
-    $process->setDateFormat('Y-m-d');
-    $date_format = $process->getDateFormat();
+    $service->setDateFormat('Y-m-d');
+    $date_format = $service->getDateFormat();
 
 ```
 

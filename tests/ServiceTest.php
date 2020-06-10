@@ -1,19 +1,47 @@
 <?php
-use Carbon\Carbon;
+
+use DateTime as DateTime;
 use PHPUnit\Framework\TestCase;
 use Salaries\Service\Service;
 
 class ServiceTest extends TestCase
 {
+    protected $service;
+
+    protected function setUp(): void
+    {
+        $this->service = new Service();
+    }
     public function testProcessMethod()
     {
-        $service = new Service();
-        $month = Carbon::createFromDate(2020, 1, 1);
-        $result = $service->process($month, 15);
+        $month = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+        $result = $this->service->process($month);
 
         $this->assertSame(
-            [$result['paymentDate']->format('Y-m-d'), $result['bonusDate']->format('Y-m-d')],
-            ['2020-01-31', '2020-01-16']
+            [$result['paymentDate'], $result['bonusDate']],
+            ['31-01-2020', '15-01-2020']
+        );
+    }
+    public function testSetBonusDay()
+    {
+        $days = 17;
+        $this->service->setBonusDay($days);
+        $result = $this->service->getBonusDay();
+
+        $this->assertSame(
+            $result,
+            $days
+        );
+    }
+    public function testSetDateFormat()
+    {
+        $dateFormat = 'Y-m-d';
+        $this->service->setDateFormat($dateFormat);
+        $result = $this->service->getDateFormat();
+
+        $this->assertSame(
+            $result,
+            $dateFormat
         );
     }
 }

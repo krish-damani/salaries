@@ -1,5 +1,4 @@
 <?php
-use Carbon\carbon;
 use PHPUnit\Framework\TestCase;
 use Salaries\Controller\Process;
 use Salaries\Model\Salary;
@@ -19,8 +18,8 @@ class ProcessTest extends TestCase
         $result = $this->process->prepareMonthlyDate('February', 2020)->toArray();
 
         $this->assertSame(
-            [$result['month'], $result['paymentDate']->format('Y-m-d'), $result['bonusDate']->format('Y-m-d')],
-            ['February-2020', '2020-02-28', '2020-02-19']
+            [$result['month'], $result['paymentDate'], $result['bonusDate']],
+            ['February-2020', '28-02-2020', '19-02-2020']
         );
     }
 
@@ -48,41 +47,6 @@ class ProcessTest extends TestCase
         $this->assertSame(
             $result,
             $months
-        );
-    }
-    public function testSetBonusDay()
-    {
-        $days = 17;
-        $this->process->setBonusDay($days);
-        $result = $this->process->getBonusDay();
-
-        $this->assertSame(
-            $result,
-            $days
-        );
-    }
-    public function testSetWeekendDays()
-    {
-        $weekEndDays = [
-            Carbon::SUNDAY,
-        ];
-        $this->process->setWeekendDays($weekEndDays);
-        $result = $this->process->getWeekendDays();
-
-        $this->assertSame(
-            $result,
-            $weekEndDays
-        );
-    }
-    public function testSetDateFormat()
-    {
-        $dateFormat = 'Y-m-d';
-        $this->process->setDateFormat($dateFormat);
-        $result = $this->process->getDateFormat();
-
-        $this->assertSame(
-            $result,
-            $dateFormat
         );
     }
 }
