@@ -14,7 +14,7 @@ class ProcessTest extends TestCase
     }
     public function test_process_monthly()
     {
-        $result = $this->process->monthly('February-2020')->toArray();
+        $result = $this->process->monthly('February',2020)->toArray();
 
         $this->assertSame(
             [$result['month'], $result['paymentDate']->format('Y-m-d'), $result['bonusDate']->format('Y-m-d')],
