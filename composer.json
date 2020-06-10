@@ -17,8 +17,8 @@
         "phpunit/phpunit": "^9.0"
     },
     "autoload": {
-        "psr-0": {
-            "Salaries": "src/"
+        "psr-4": {
+            "Salaries\\": "src/"
         }
     }
 }

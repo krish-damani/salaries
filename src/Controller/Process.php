@@ -1,12 +1,12 @@
 <?php declare (strict_types = 1);
 
-namespace Salaries;
+namespace Salaries\Controller;
 
 use Carbon\Carbon;
 use Exception;
-use Salaries\Model;
-use Salaries\Parse;
-use Salaries\Service;
+use Salaries\Model\Salary as Model;
+use Salaries\Service\Parse;
+use Salaries\Service\Service;
 
 class Process
 {

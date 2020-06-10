@@ -1,10 +1,10 @@
 <?php declare (strict_types = 1);
 
-namespace Salaries;
+namespace Salaries\Model;
 
-use Salaries\Parse;
+use Salaries\Service\Parse;
 
-class Model
+class Salary
 {
     use parse;
 

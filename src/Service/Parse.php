@@ -1,6 +1,6 @@
 <?php declare (strict_types = 1);
 
-namespace Salaries;
+namespace Salaries\Service;
 
 trait Parse
 {
