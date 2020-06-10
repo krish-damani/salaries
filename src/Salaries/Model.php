@@ -8,6 +8,12 @@ class Model
 {
     use parse;
 
+    /**
+     * setFields
+     *
+     * @param  mixed $values
+     * @return self
+     */
     public function setFields(array $values): self
     {
         foreach ($values as $key => $value) {

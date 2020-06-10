@@ -6,6 +6,13 @@ use Carbon\Carbon;
 
 class Service
 {
+    /**
+     * process
+     *
+     * @param  mixed $month
+     * @param  mixed $bonus_day
+     * @return array
+     */
     public function process(Carbon $month, int $bonus_day): array
     {
         $bonus_date = $month->copy()->addDays($bonus_day);

@@ -42,6 +42,12 @@ class Process
         Carbon::setToStringFormat($this->date_format);
     }
 
+    /**
+     * monthly
+     *
+     * @param  mixed $name
+     * @return Model
+     */
     public function monthly(string $name): Model
     {
         preg_match('#(?<month>[A-Za-z]+)-(?<year>[0-9]{4})#', $name, $result);
@@ -55,6 +61,12 @@ class Process
         return $model->setFields(['month' => $result['month'] . '-' . $result['year']] + $data);
     }
 
+    /**
+     * yearly
+     *
+     * @param  mixed $year
+     * @return self
+     */
     public function yearly(int $year): self
     {
         $this->data = [];
@@ -64,47 +76,99 @@ class Process
         return $this;
     }
     /**
-     * get Weekend Days
-     * return array
+     * getWeekendDays
+     *
+     * @return array
      */
     public function getWeekendDays(): array
     {
         return $this->weekdays;
     }
+    /**
+     * setWeekendDays
+     *
+     * @param  mixed $weekdays
+     * @return void
+     */
     public function setWeekendDays(array $weekdays)
     {
         $this->weekdays = $weekdays;
     }
+    /**
+     * setMonths
+     *
+     * @param  mixed $months
+     * @return void
+     */
     public function setMonths(array $months)
     {
         $this->months = $months;
     }
+    /**
+     * getMonths
+     *
+     * @return array
+     */
     public function getMonths(): array
     {
         return $this->months;
     }
+    /**
+     * setBonusDay
+     *
+     * @param  mixed $bonus_day
+     * @return void
+     */
     public function setBonusDay(int $bonus_day)
     {
         $this->bonus_day = $bonus_day;
     }
+    /**
+     * getBonusDay
+     *
+     * @return int
+     */
     public function getBonusDay(): int
     {
         return $this->bonus_day;
     }
 
+    /**
+     * setService
+     *
+     * @param  mixed $service
+     * @return void
+     */
     public function setService(Service $service)
     {
         $this->service = $service;
     }
 
+    /**
+     * setModel
+     *
+     * @param  mixed $model
+     * @return void
+     */
     public function setModel(Model $model)
     {
         $this->model = $model;
     }
+    /**
+     * setDateFormat
+     *
+     * @param  mixed $date_format
+     * @return void
+     */
     public function setDateFormat(string $date_format)
     {
         $this->date_format = $date_format;
     }
+    /**
+     * getDateFormat
+     *
+     * @return string
+     */
     public function getDateFormat(): string
     {
         return $this->date_format;

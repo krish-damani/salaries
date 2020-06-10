@@ -6,15 +6,31 @@ trait Parse
 {
     public $data = [];
 
+    /**
+     * toArray
+     *
+     * @return array
+     */
     public function toArray(): array
     {
         return $this->data;
     }
 
+    /**
+     * toJson
+     *
+     * @return string
+     */
     public function toJson(): string
     {
         return json_encode($this->data);
     }
+    /**
+     * saveCSV
+     *
+     * @param  mixed $file_path
+     * @return string
+     */
     public function saveCSV(string $file_path): string
     {
         $fp = fopen($file_path, 'w');
