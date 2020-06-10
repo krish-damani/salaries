@@ -1,4 +1,4 @@
-#https://buddy.works/guides/how-dockerize-node-application
+#https://hub.docker.com/_/php
 
 FROM php:7.4-cli
 
