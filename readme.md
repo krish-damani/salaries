@@ -92,4 +92,3 @@ Convert CSV/JSON/Array
 
 ```
 
-(https://raw.githubusercontent.com/dineshrabara/salaries/master/yearly.csv?token=AAJL2YVAC6TC2UQ443QDNDC64BX5C)
