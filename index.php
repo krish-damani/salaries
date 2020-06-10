@@ -6,4 +6,4 @@ use Salaries\Controller\Process;
 
 $process = new Process();
 
-echo $process->yearly(2020)->saveCSV(__DIR__ . '/../' . 'yearly.csv');
+echo $process->yearly(2020)->saveCSV(__DIR__ . '/yearly.csv');

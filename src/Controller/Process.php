@@ -25,21 +25,21 @@ class Process
         11 => 'November',
         12 => 'December',
     ];
-    private $weekdays = [
+    private $weekEndDays = [
         Carbon::SATURDAY,
         Carbon::SUNDAY,
     ];
-    private $bonus_day = 14;
+    private $bonusDay = 14;
     private $service;
     private $model;
-    private $date_format = 'd-m-Y';
+    private $dateFormat = 'd-m-Y';
 
     public function __construct()
     {
         $this->service = new service();
         $this->model = new Model();
-        Carbon::setWeekendDays($this->weekdays);
-        Carbon::setToStringFormat($this->date_format);
+        Carbon::setWeekendDays($this->weekEndDays);
+        Carbon::setToStringFormat($this->dateFormat);
     }
 
     /**
@@ -56,7 +56,7 @@ class Process
             throw new Exception("Month name not found :" . $name, 1);
         }
         $month = Carbon::createFromDate($result['year'], array_flip($this->months)[$result['month']], 1);
-        $data = $this->service->process($month, $this->bonus_day);
+        $data = $this->service->process($month, $this->bonusDay);
         $model = clone $this->model;
         return $model->setFields(['month' => $result['month'] . '-' . $result['year']] + $data);
     }
@@ -82,17 +82,17 @@ class Process
      */
     public function getWeekendDays(): array
     {
-        return $this->weekdays;
+        return $this->weekEndDays;
     }
     /**
      * setWeekendDays
      *
-     * @param  array $weekdays
+     * @param  array $weekEndDays
      * @return void
      */
-    public function setWeekendDays(array $weekdays)
+    public function setWeekendDays(array $weekEndDays)
     {
-        $this->weekdays = $weekdays;
+        $this->weekEndDays = $weekEndDays;
     }
     /**
      * setMonths
@@ -116,12 +116,12 @@ class Process
     /**
      * setBonusDay
      *
-     * @param  int $bonus_day
+     * @param  int $bonusDay
      * @return void
      */
-    public function setBonusDay(int $bonus_day)
+    public function setBonusDay(int $bonusDay)
     {
-        $this->bonus_day = $bonus_day;
+        $this->bonusDay = $bonusDay;
     }
     /**
      * getBonusDay
@@ -130,7 +130,7 @@ class Process
      */
     public function getBonusDay(): int
     {
-        return $this->bonus_day;
+        return $this->bonusDay;
     }
 
     /**
@@ -157,12 +157,12 @@ class Process
     /**
      * setDateFormat
      *
-     * @param  string $date_format
+     * @param  string $dateFormat
      * @return void
      */
-    public function setDateFormat(string $date_format)
+    public function setDateFormat(string $dateFormat)
     {
-        $this->date_format = $date_format;
+        $this->dateFormat = $dateFormat;
     }
     /**
      * getDateFormat
@@ -171,6 +171,6 @@ class Process
      */
     public function getDateFormat(): string
     {
-        return $this->date_format;
+        return $this->dateFormat;
     }
 }

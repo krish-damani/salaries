@@ -10,21 +10,21 @@ class Service
      * process
      *
      * @param  Carbon $month
-     * @param  int $bonus_day
+     * @param  int $bonusDay
      * @return array
      */
-    public function process(Carbon $month, int $bonus_day): array
+    public function process(Carbon $month, int $bonusDay): array
     {
-        $bonus_date = $month->copy()->addDays($bonus_day);
-        $payment_date = $month->copy()->endOfMonth();
+        $bonusDay = $month->copy()->addDays($bonusDay);
+        $paymentDate = $month->copy()->endOfMonth();
 
-        if ($payment_date->isWeekend()) {
-            $payment_date = $payment_date->previous('Friday');
+        if ($paymentDate->isWeekend()) {
+            $paymentDate = $paymentDate->previous('Friday');
         }
-        if ($bonus_date->isWeekend()) {
-            $bonus_date = $bonus_date->next('Wednesday');
+        if ($bonusDay->isWeekend()) {
+            $bonusDay = $bonusDay->next('Wednesday');
         }
 
-        return ['payment_date' => $payment_date, 'pre_month_bonus_date' => $bonus_date];
+        return ['paymentDate' => $paymentDate, 'bonusDate' => $bonusDay];
     }
 }

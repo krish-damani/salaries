@@ -17,23 +17,14 @@ trait Parse
     }
 
     /**
-     * toJson
-     *
-     * @return string
-     */
-    public function toJson(): string
-    {
-        return json_encode($this->data);
-    }
-    /**
      * saveCSV
      *
-     * @param  string $file_path
+     * @param  string $filePath
      * @return string
      */
-    public function saveCSV(string $file_path): string
+    public function saveCSV(string $filePath): string
     {
-        $fp = fopen($file_path, 'w');
+        $fp = fopen($filePath, 'w');
         //headers
         fputcsv($fp, array_keys($this->toArray()[0]->toArray()));
         //rows
@@ -41,6 +32,6 @@ trait Parse
             fputcsv($fp, $fields->toArray());
         }
         fclose($fp);
-        return $file_path;
+        return $filePath;
     }
 }

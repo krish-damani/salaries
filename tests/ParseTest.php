@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Salaries\Parse;
+use Salaries\Service\Parse;
 
 class ParseTest extends TestCase
 {

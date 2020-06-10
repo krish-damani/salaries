@@ -1,7 +1,7 @@
 <?php
 use Carbon\Carbon;
 use PHPUnit\Framework\TestCase;
-use Salaries\Service;
+use Salaries\Service\Service;
 
 class ServiceTest extends TestCase
 {
@@ -12,7 +12,7 @@ class ServiceTest extends TestCase
         $result = $service->process($month, 15);
 
         $this->assertSame(
-            [$result['payment_date']->format('Y-m-d'), $result['pre_month_bonus_date']->format('Y-m-d')],
+            [$result['paymentDate']->format('Y-m-d'), $result['bonusDate']->format('Y-m-d')],
             ['2020-01-31', '2020-01-16']
         );
     }
