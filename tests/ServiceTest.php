@@ -5,7 +5,7 @@ use Salaries\Service\Service;
 
 class ServiceTest extends TestCase
 {
-    public function test_process_method()
+    public function testProcessMethod()
     {
         $service = new Service();
         $month = Carbon::createFromDate(2020, 1, 1);

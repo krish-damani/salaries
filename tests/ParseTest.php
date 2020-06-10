@@ -10,11 +10,7 @@ class ParseTest extends TestCase
     {
         $this->mock = $this->getMockForTrait(Parse::class);
     }
-    public function test_to_array_method()
-    {
-        $this->assertSame($this->mock->toArray(), []);
-    }
-    public function test_to_json_method()
+    public function testToArrayMethod()
     {
         $this->assertSame($this->mock->toArray(), []);
     }

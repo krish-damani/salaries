@@ -5,7 +5,7 @@ use Salaries\Model\Salary;
 
 class ModelTest extends TestCase
 {
-    public function test_set_field_method()
+    public function testSetFieldMethod()
     {
         $model = new Salary();
         $data = ['month' => 'January-2020', 'paymentDate' => Carbon::now(), 'bonusDate' => Carbon::now()];

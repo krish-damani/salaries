@@ -12,7 +12,7 @@ class ProcessTest extends TestCase
     {
         $this->process = new Process();
     }
-    public function test_process_monthly()
+    public function testProcessMonthly()
     {
         $result = $this->process->monthly('February',2020)->toArray();
 
@@ -22,7 +22,7 @@ class ProcessTest extends TestCase
         );
     }
 
-    public function test_process_yearly()
+    public function testProcessYearly()
     {
         $result = $this->process->yearly('2020')->toArray();
 
@@ -31,7 +31,7 @@ class ProcessTest extends TestCase
             12
         );
     }
-    public function test_set_month()
+    public function testSetMonth()
     {
         $months = [
             1 => 'January',
@@ -48,7 +48,7 @@ class ProcessTest extends TestCase
             $months
         );
     }
-    public function test_set_bonus_day()
+    public function testSetBonusDay()
     {
         $days = 17;
         $this->process->setBonusDay($days);
@@ -59,7 +59,7 @@ class ProcessTest extends TestCase
             $days
         );
     }
-    public function test_set_weekenddays()
+    public function testSetWeekEndDays()
     {
         $weekEndDays = [
             Carbon::SUNDAY,
@@ -72,7 +72,7 @@ class ProcessTest extends TestCase
             $weekEndDays
         );
     }
-    public function test_set_date_format()
+    public function testSetDateFormat()
     {
         $dateFormat = 'Y-m-d';
         $this->process->setDateFormat($dateFormat);
