@@ -16,15 +16,12 @@ Once this operation completes.
 
 For Console Run
 
-    php tests/test.php
+    php index.php
 
 Now you can use like below
 ```php
 
-    use Salaries\Process;
-    use Salaries\Service;
-
-
+    use Salaries\Constroller\Process;
 
     $process = new Process($service);
 
@@ -98,7 +95,7 @@ Convert CSV/JSON/Array
 
  SaveCSV file output look like below
 
-|Month|Payment Date|Pre Month Bonus Date|
+|Month|Payment Date|Bonus Date|
 |-----|-----|-----|
 |January-2020|31-01-2020|15-01-2020|
 |February-2020|28-02-2020|19-02-2020|
