@@ -77,3 +77,13 @@ For PHPUnit check use below commands
 
 
 Convert CSV/JSON/Array
+
+```php
+    //return process month with model
+    $result = $process->yearly(2020)->toArray();
+    //or
+    $result = $process->yearly(2020)->toJson();
+    //or
+    $result = $process->yearly(2020)->saveCSV('/home/dns/code/open/salaries/yearly.csv');
+
+```

@@ -15,4 +15,16 @@ trait Parse
     {
         return json_encode($this->data);
     }
+    public function saveCSV(string $file_path): string
+    {
+        $fp = fopen($file_path, 'w');
+        //headers
+        fputcsv($fp, array_keys($this->toArray()[0]->toArray()));
+        //rows
+        foreach ($this->data as $fields) {
+            fputcsv($fp, $fields->toArray());
+        }
+        fclose($fp);
+        return $file_path;
+    }
 }

@@ -49,15 +49,15 @@ class Process
         }
         $month = Carbon::createFromDate($result['year'], array_flip($this->months)[$result['month']], 1);
         $data = $this->service->process($month, $this->bonus_day);
-
-        return $this->model->setFields(['month' => $result['month'] . '-' . $result['year']] + $data);
+        $model = clone $this->model;
+        return $model->setFields(['month' => $result['month'] . '-' . $result['year']] + $data);
     }
 
     public function yearly(int $year): self
     {
         $this->data = [];
         foreach ($this->months as $month) {
-            $this->data[] = self::monthly($month . '-' . $year);
+            $this->data[] = $this->monthly($month . '-' . $year);
         }
         return $this;
     }
