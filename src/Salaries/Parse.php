@@ -28,7 +28,7 @@ trait Parse
     /**
      * saveCSV
      *
-     * @param  mixed $file_path
+     * @param  string $file_path
      * @return string
      */
     public function saveCSV(string $file_path): string

@@ -9,8 +9,8 @@ class Service
     /**
      * process
      *
-     * @param  mixed $month
-     * @param  mixed $bonus_day
+     * @param  Carbon $month
+     * @param  int $bonus_day
      * @return array
      */
     public function process(Carbon $month, int $bonus_day): array

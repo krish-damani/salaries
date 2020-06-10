@@ -11,7 +11,7 @@ class Model
     /**
      * setFields
      *
-     * @param  mixed $values
+     * @param  array $values
      * @return self
      */
     public function setFields(array $values): self

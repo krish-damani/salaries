@@ -45,7 +45,7 @@ class Process
     /**
      * monthly
      *
-     * @param  mixed $name
+     * @param  string $name
      * @return Model
      */
     public function monthly(string $name): Model
@@ -64,7 +64,7 @@ class Process
     /**
      * yearly
      *
-     * @param  mixed $year
+     * @param  int $year
      * @return self
      */
     public function yearly(int $year): self
@@ -87,7 +87,7 @@ class Process
     /**
      * setWeekendDays
      *
-     * @param  mixed $weekdays
+     * @param  array $weekdays
      * @return void
      */
     public function setWeekendDays(array $weekdays)
@@ -97,7 +97,7 @@ class Process
     /**
      * setMonths
      *
-     * @param  mixed $months
+     * @param  array $months
      * @return void
      */
     public function setMonths(array $months)
@@ -116,7 +116,7 @@ class Process
     /**
      * setBonusDay
      *
-     * @param  mixed $bonus_day
+     * @param  int $bonus_day
      * @return void
      */
     public function setBonusDay(int $bonus_day)
@@ -136,7 +136,7 @@ class Process
     /**
      * setService
      *
-     * @param  mixed $service
+     * @param  Service $service
      * @return void
      */
     public function setService(Service $service)
@@ -147,7 +147,7 @@ class Process
     /**
      * setModel
      *
-     * @param  mixed $model
+     * @param  Model $model
      * @return void
      */
     public function setModel(Model $model)
@@ -157,7 +157,7 @@ class Process
     /**
      * setDateFormat
      *
-     * @param  mixed $date_format
+     * @param  string $date_format
      * @return void
      */
     public function setDateFormat(string $date_format)
