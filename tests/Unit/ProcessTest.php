@@ -1,4 +1,8 @@
 <?php
+
+declare(strict_types=1);
+
+namespace Tests\Unit;
 use PHPUnit\Framework\TestCase;
 use Salaries\Controller\Process;
 use Salaries\Model\Salary;
@@ -25,7 +29,7 @@ class ProcessTest extends TestCase
 
     public function testProcessYearlyDates()
     {
-        $result = $this->process->prepareYearlyDates('2020')->toArray();
+        $result = $this->process->prepareYearlyDates(2020)->toArray();
 
         $this->assertSame(
             count($result),
