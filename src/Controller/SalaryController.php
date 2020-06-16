@@ -5,7 +5,6 @@ namespace Salaries\Controller;
 use DateTime;
 use Salaries\Contracts\DateCalculatorInterface;
 use Salaries\Contracts\SalaryModelInterface;
-use Salaries\Model\Salary;
 use Salaries\Service\Parse;
 
 class SalaryController
@@ -39,9 +38,9 @@ class SalaryController
      *
      * @param  string $name
      * @param  int $year
-     * @return Salary
+     * @return SalaryModelInterface
      */
-    public function prepareMonthlyDate(string $monthName, int $year): Salary
+    public function prepareMonthlyDate(string $monthName, int $year): SalaryModelInterface
     {
         $month = DateTime::createFromFormat('Y-m-d', $year . '-' . array_flip($this->months)[$monthName] . '-1');
         $data = $this->service->processDates($month);
