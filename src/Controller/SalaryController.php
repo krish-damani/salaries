@@ -4,12 +4,11 @@ namespace Salaries\Controller;
 
 use DateTime;
 use Salaries\Contracts\DateCalculatorInterface;
+use Salaries\Contracts\ExportOutputInterface;
 use Salaries\Contracts\SalaryModelInterface;
-use Salaries\Service\Parse;
 
 class SalaryController
 {
-    use parse;
     private $months = [
         1 => 'January',
         2 => 'February',
@@ -26,11 +25,21 @@ class SalaryController
     ];
     private $service;
     private $model;
+    private $output;
 
-    public function __construct(DateCalculatorInterface $service, SalaryModelInterface $model)
+    /**
+     * __construct
+     *
+     * @param  DateCalculatorInterface $service
+     * @param  SalaryModelInterface $model
+     * @param  ExportOutputInterface $output
+     * @return void
+     */
+    public function __construct(DateCalculatorInterface $service, SalaryModelInterface $model, ExportOutputInterface $output)
     {
         $this->service = $service;
         $this->model = $model;
+        $this->output = $output;
     }
 
     /**
@@ -52,15 +61,15 @@ class SalaryController
      * Prepare Yearly Dates
      *
      * @param  int $year
-     * @return self
+     * @return ExportOutputInterface
      */
-    public function prepareYearlyDates(int $year): self
+    public function prepareYearlyDates(int $year): ExportOutputInterface
     {
-        $this->data = [];
+        $data = [];
         foreach ($this->months as $month) {
-            $this->data[] = $this->prepareMonthlyDate($month, $year);
+            $data[] = $this->prepareMonthlyDate($month, $year);
         }
-        return $this;
+        return $this->output->setData($data);
     }
     /**
      * setMonths
@@ -102,5 +111,15 @@ class SalaryController
     public function setModel(SalaryModelInterface $model): void
     {
         $this->model = $model;
+    }
+    /**
+     * setOutput class here
+     *
+     * @param  ExportOutputInterface $output
+     * @return void
+     */
+    public function setOutput(ExportOutputInterface $output): void
+    {
+        $this->output = $output;
     }
 }

@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use Salaries\Controller\SalaryController;
 use Salaries\Model\Salary;
 use Salaries\Service\DateCalculatorService;
+use Salaries\Service\ExportCSV as Output;
 
 class SalaryControllerTest extends TestCase
 {
@@ -16,7 +17,7 @@ class SalaryControllerTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->SalaryController = new SalaryController(new DateCalculatorService(), new Salary());
+        $this->SalaryController = new SalaryController(new DateCalculatorService(), new Salary(), new Output());
     }
     public function testSalaryControllerMonthlyDate()
     {
@@ -30,8 +31,8 @@ class SalaryControllerTest extends TestCase
 
     public function testSalaryControllerYearlyDates()
     {
-        $result = $this->SalaryController->prepareYearlyDates(2020)->toArray();
-
+        $result = (array) $this->SalaryController->prepareYearlyDates(2020)->getData();
+        
         $this->assertSame(
             count($result),
             12

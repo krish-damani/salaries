@@ -24,11 +24,12 @@ Now you can use like below
     use Salaries\Controller\SalaryController;
     use Salaries\Model\Salary;
     use Salaries\Service\DateCalculatorService as Service;
+    use Salaries\Service\ExportCSV as Output;
 
-    $salaryController = new SalaryController(new Service(), new Salary());
+    $salaryController = new SalaryController(new Service(), new Salary(), new Output());
 
     //return salaryController month with model
-    $result = $salaryController->prepareYearlyDates(2020)->toArray();
+    $result = $salaryController->prepareYearlyDates(2020);
 
     //if you want to get monthly then like below
     $result = $salaryController->prepareMonthlyDate('February',2020);
@@ -57,7 +58,7 @@ Manually seting options for months/bonusday/weekendday/dateformat
 
 ```
 
-Overwrite Model/service
+Overwrite Model/service/output
 
 ```php
     //if you want to Overwrite model like below
@@ -71,6 +72,9 @@ Overwrite Model/service
     //model like below
     $salaryController->setModel($model);
 
+    //output class may be for csv/pdf/excel/text any
+    $salaryController->setOutput($output);
+
 ```
 
 For PHPUnit check use below commands
@@ -83,9 +87,9 @@ Convert CSV/Array
 
 ```php
     //return salaryController month with model
-    $result = $salaryController->prepareYearlyDates(2020)->toArray();
+    $result = $salaryController->prepareYearlyDates(2020);
     //or
-    $result = $salaryController->prepareYearlyDates(2020)->saveCSV('/home/dns/code/open/salaries/yearly.csv');
+    $result = $salaryController->prepareYearlyDates(2020)->save('/home/dns/code/open/salaries/yearly.csv');
 
 ```
 
