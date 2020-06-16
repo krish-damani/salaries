@@ -21,31 +21,31 @@ For Console Run
 Now you can use like below
 ```php
 
-    use Salaries\Constroller\Process;
+    use Salaries\Controller\SalaryController;
     use Salaries\Model\Salary;
-    use Salaries\Service\Service;
+    use Salaries\Service\DateCalculatorService as Service;
 
-    $process = new Process(new Service(), new Salary());
+    $salaryController = new SalaryController(new Service(), new Salary());
 
-    //return process month with model
-    $result = $process->prepareYearlyDates(2020)->toArray();
+    //return salaryController month with model
+    $result = $salaryController->prepareYearlyDates(2020)->toArray();
 
     //if you want to get monthly then like below
-    $result = $process->prepareMonthlyDate('February',2020)->toArray();
+    $result = $salaryController->prepareMonthlyDate('February',2020);
 
 ```
 Manually seting options for months/bonusday/weekendday/dateformat
 
 ```php
-    //if you want to process only selected months then like below
-    $process->setMonths([
+    //if you want to salaryController only selected months then like below
+    $salaryController->setMonths([
         1 => 'January',
         2 => 'February',
         3 => 'March',
         4 => 'April',
         5 => 'May'
     ]);
-    $months = $process->getMonths();
+    $months = $salaryController->getMonths();
 
     //if you want to set Bonus Day of the Month
     $service->setBonusDay(14);
@@ -63,13 +63,13 @@ Overwrite Model/service
     //if you want to Overwrite model like below
      //you can overwrite service if you want to
     $service = new DateCalculatorService();
-    $process = new Process();
+    $salaryController = new SalaryController();
 
     //service like below
-    $process->setService($service);
+    $salaryController->setService($service);
 
     //model like below
-    $process->setModel($model);
+    $salaryController->setModel($model);
 
 ```
 
@@ -82,10 +82,10 @@ For PHPUnit check use below commands
 Convert CSV/Array
 
 ```php
-    //return process month with model
-    $result = $process->prepareYearlyDates(2020)->toArray();
+    //return salaryController month with model
+    $result = $salaryController->prepareYearlyDates(2020)->toArray();
     //or
-    $result = $process->prepareYearlyDates(2020)->saveCSV('/home/dns/code/open/salaries/yearly.csv');
+    $result = $salaryController->prepareYearlyDates(2020)->saveCSV('/home/dns/code/open/salaries/yearly.csv');
 
 ```
 

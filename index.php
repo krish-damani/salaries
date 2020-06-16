@@ -2,10 +2,10 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-use Salaries\Controller\Process;
+use Salaries\Controller\SalaryController;
 use Salaries\Model\Salary;
-use Salaries\Service\Service;
+use Salaries\Service\DateCalculatorService as Service;
 
-$process = new Process(new Service(), new Salary());
+$salaryController = new SalaryController(new Service(), new Salary());
 
-echo $process->prepareYearlyDates(2020)->saveCSV(__DIR__ . '/yearly.csv');
+echo $salaryController->prepareYearlyDates(2020)->saveCSV(__DIR__ . '/yearly.csv');

@@ -26,10 +26,10 @@ trait Parse
     {
         $fp = fopen($filePath, 'w');
         //headers
-        fputcsv($fp, array_keys($this->toArray()[0]->toArray()));
+        fputcsv($fp, array_keys((array) $this->toArray()[0]));
         //rows
         foreach ($this->data as $fields) {
-            fputcsv($fp, $fields->toArray());
+            fputcsv($fp, (array) $fields);
         }
         fclose($fp);
         return $filePath;
