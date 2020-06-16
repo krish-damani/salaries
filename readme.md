@@ -62,7 +62,7 @@ Overwrite Model/service
 ```php
     //if you want to Overwrite model like below
      //you can overwrite service if you want to
-    $service = new Service();
+    $service = new DateCalculatorService();
     $process = new Process();
 
     //service like below

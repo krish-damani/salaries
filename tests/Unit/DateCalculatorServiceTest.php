@@ -16,10 +16,10 @@ class DateCalculatorServiceTest extends TestCase
     {
         $this->service = new DateCalculatorService();
     }
-    public function testProcessMethod()
+    public function testProcessDatesMethod()
     {
         $month = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-        $result = $this->service->process($month);
+        $result = $this->service->processDates($month);
 
         $this->assertSame(
             [$result['paymentDate'], $result['bonusDate']],

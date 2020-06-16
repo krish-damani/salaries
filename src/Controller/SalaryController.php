@@ -3,9 +3,9 @@
 namespace Salaries\Controller;
 
 use DateTime;
+use Salaries\Contracts\DateCalculatorInterface;
 use Salaries\Model\Salary;
 use Salaries\Service\Parse;
-use Salaries\Service\DateCalculatorService;
 
 class SalaryController
 {
@@ -27,7 +27,7 @@ class SalaryController
     private $service;
     private $model;
 
-    public function __construct(DateCalculatorService $service, Salary $model)
+    public function __construct(DateCalculatorInterface $service, Salary $model)
     {
         $this->service = $service;
         $this->model = $model;
@@ -43,7 +43,7 @@ class SalaryController
     public function prepareMonthlyDate(string $monthName, int $year): Salary
     {
         $month = DateTime::createFromFormat('Y-m-d', $year . '-' . array_flip($this->months)[$monthName] . '-1');
-        $data = $this->service->process($month);
+        $data = $this->service->processDates($month);
         $model = clone $this->model;
         return $model->setFields(['month' => $monthName . '-' . $year] + $data);
     }
@@ -85,10 +85,10 @@ class SalaryController
     /**
      * setService
      *
-     * @param  new Service $service
+     * @param  DateCalculatorInterface $service
      * @return void
      */
-    public function setService($service)
+    public function setService(DateCalculatorInterface $service)
     {
         $this->service = $service;
     }

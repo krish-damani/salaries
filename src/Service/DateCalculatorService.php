@@ -4,6 +4,7 @@ namespace Salaries\Service;
 
 use DateInterval;
 use DateTime;
+use Salaries\Contracts\DateCalculatorInterface;
 
 /**
  * Service to get Salary Dates
@@ -11,7 +12,7 @@ use DateTime;
  * @author Dinesh Rabara <d.rabara@easternenterprise.com>
  */
 
-class DateCalculatorService
+class DateCalculatorService implements DateCalculatorInterface
 {
     /**
      * bonusDay
@@ -32,12 +33,12 @@ class DateCalculatorService
      */
     private $weekenddays = [6, 0];
     /**
-     * process
+     * process Dates
      *
      * @param  DateTime $month
      * @return array
      */
-    public function process(DateTime $month): array
+    public function processDates(DateTime $month): array
     {
         $bonusDay = clone $month->add(new DateInterval("P{$this->bonusDay}D"));
         $paymentDate = DateTime::createFromFormat('Y-m-d', $month->format('Y-m-t'));
