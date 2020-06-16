@@ -16,7 +16,7 @@ Once this operation completes.
 
 For Console Run
 
-    php index.php
+    php public/index.php
 
 Now you can use like below
 ```php
