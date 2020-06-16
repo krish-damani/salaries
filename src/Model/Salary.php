@@ -1,4 +1,10 @@
-<?php declare (strict_types = 1);
+<?php
+/**
+ * Model for salary
+ *
+ * @author Dinesh Rabara <d.rabara@easternenterprise.com>
+ */
+declare (strict_types = 1);
 
 namespace Salaries\Model;
 

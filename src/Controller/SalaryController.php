@@ -1,4 +1,11 @@
-<?php declare (strict_types = 1);
+<?php
+
+/**
+ * Controller for salary
+ *
+ * @author Dinesh Rabara <d.rabara@easternenterprise.com>
+ */
+declare (strict_types = 1);
 
 namespace Salaries\Controller;
 
@@ -9,7 +16,7 @@ use Salaries\Contracts\SalaryModelInterface;
 
 class SalaryController
 {
-    private $months = [
+    private array $months = [
         1 => 'January',
         2 => 'February',
         3 => 'March',
@@ -23,9 +30,9 @@ class SalaryController
         11 => 'November',
         12 => 'December',
     ];
-    private $service;
-    private $model;
-    private $output;
+    private DateCalculatorInterface $service;
+    private SalaryModelInterface $model;
+    private ExportOutputInterface $output;
 
     /**
      * __construct
@@ -73,7 +80,7 @@ class SalaryController
     }
     /**
      * setMonths
-     *
+     * if you want then you can set bunch of months like only 3 months or 6 months
      * @param  array $months
      * @return void
      */

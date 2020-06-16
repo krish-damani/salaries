@@ -1,16 +1,17 @@
-<?php declare (strict_types = 1);
+<?php
+
+/**
+ * Service to process salary and bonus date
+ *
+ * @author Dinesh Rabara <d.rabara@easternenterprise.com>
+ */
+declare (strict_types = 1);
 
 namespace Salaries\Service;
 
 use DateInterval;
 use DateTime;
 use Salaries\Contracts\DateCalculatorInterface;
-
-/**
- * Service to get Salary Dates
- *
- * @author Dinesh Rabara <d.rabara@easternenterprise.com>
- */
 
 class DateCalculatorService implements DateCalculatorInterface
 {
@@ -27,11 +28,11 @@ class DateCalculatorService implements DateCalculatorInterface
      */
     private $dateFormat = 'd-m-Y';
     /**
-     * weekenddays
+     * weekendDays
      *
      * @var array
      */
-    private $weekenddays = [6, 0];
+    private $weekendDays = [6, 0];
     /**
      * process Dates
      *
@@ -58,7 +59,7 @@ class DateCalculatorService implements DateCalculatorInterface
      * @param  int $bonusDay
      * @return void
      */
-    public function setBonusDay(int $bonusDay)
+    public function setBonusDay(int $bonusDay): void
     {
         $this->bonusDay = $bonusDay;
     }
@@ -77,7 +78,7 @@ class DateCalculatorService implements DateCalculatorInterface
      * @param  string $dateFormat
      * @return void
      */
-    public function setDateFormat(string $dateFormat)
+    public function setDateFormat(string $dateFormat): void
     {
         $this->dateFormat = $dateFormat;
     }
@@ -99,6 +100,25 @@ class DateCalculatorService implements DateCalculatorInterface
      */
     private function isWeekend(DateTime $date): bool
     {
-        return in_array($date->format('w'), $this->weekenddays);
+        return in_array($date->format('w'), $this->weekendDays);
+    }
+    /**
+     * setWeekendDays
+     *
+     * @param  array $weekendDays
+     * @return void
+     */
+    public function setWeekendDays(array $weekendDays): void
+    {
+        $this->weekendDays = $weekendDays;
+    }
+    /**
+     * getWeekendDays
+     *
+     * @return array
+     */
+    public function getWeekendDays(): array
+    {
+        return $this->weekendDays;
     }
 }

@@ -2,7 +2,7 @@
 
 declare (strict_types = 1);
 
-namespace Tests\Unit;
+namespace Tests\Feature;
 
 use PHPUnit\Framework\TestCase;
 use Salaries\Controller\SalaryController;
@@ -32,7 +32,7 @@ class SalaryControllerTest extends TestCase
     public function testSalaryControllerYearlyDates()
     {
         $result = (array) $this->SalaryController->prepareYearlyDates(2020)->getData();
-        
+
         $this->assertSame(
             count($result),
             12

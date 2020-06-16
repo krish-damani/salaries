@@ -29,7 +29,7 @@ Now you can use like below
     $salaryController = new SalaryController(new Service(), new Salary(), new Output());
 
     //return salaryController month with model
-    $result = $salaryController->prepareYearlyDates(2020);
+    $result = $salaryController->prepareYearlyDates(2020)->getData();
 
     //if you want to get monthly then like below
     $result = $salaryController->prepareMonthlyDate('February',2020);
@@ -51,6 +51,10 @@ Manually seting options for months/bonusday/weekendday/dateformat
     //if you want to set Bonus Day of the Month
     $service->setBonusDay(14);
     $bonusdays = $service->getBonusDay();
+
+    //if you want to set weekend days of the Month like 5 days a week or 4 days a week
+    $service->setWeekendDays([6]);
+    $weekendDays = $service->getWeekendDays();
 
     //set output date format default d-m-Y
     $service->setDateFormat('Y-m-d');
@@ -87,7 +91,7 @@ Convert CSV/Array
 
 ```php
     //return salaryController month with model
-    $result = $salaryController->prepareYearlyDates(2020);
+    $result = $salaryController->prepareYearlyDates(2020)->getData();
     //or
     $result = $salaryController->prepareYearlyDates(2020)->save('/home/dns/code/open/salaries/yearly.csv');
 

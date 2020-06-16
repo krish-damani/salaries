@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types = 1);
 
 namespace Tests\Unit;
 
@@ -31,6 +31,17 @@ class DateCalculatorServiceTest extends TestCase
         $days = 17;
         $this->service->setBonusDay($days);
         $result = $this->service->getBonusDay();
+
+        $this->assertSame(
+            $result,
+            $days
+        );
+    }
+    public function testSetWeekendDays()
+    {
+        $days = [6];
+        $this->service->setWeekendDays($days);
+        $result = $this->service->getWeekendDays();
 
         $this->assertSame(
             $result,
