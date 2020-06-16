@@ -10,7 +10,7 @@ WORKDIR /app
 
 COPY . /app
 
-CMD php index.php
+CMD php public/index.php
 
 # EXPOSE 3000
 
