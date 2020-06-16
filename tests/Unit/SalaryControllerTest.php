@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 use PHPUnit\Framework\TestCase;
-use Salaries\Controller\Process;
+use Salaries\Controller\SalaryController;
 use Salaries\Model\Salary;
-use Salaries\Service\Service;
+use Salaries\Service\DateCalculatorService;
 
-class ProcessTest extends TestCase
+class SalaryControllerTest extends TestCase
 {
 
-    protected $process;
+    protected $SalaryController;
 
     protected function setUp(): void
     {
-        $this->process = new Process(new Service(), new Salary());
+        $this->SalaryController = new SalaryController(new DateCalculatorService(), new Salary());
     }
-    public function testProcessMonthlyDate()
+    public function testSalaryControllerMonthlyDate()
     {
-        $result = $this->process->prepareMonthlyDate('February', 2020)->toArray();
+        $result = $this->SalaryController->prepareMonthlyDate('February', 2020)->toArray();
 
         $this->assertSame(
             [$result['month'], $result['paymentDate'], $result['bonusDate']],
@@ -27,9 +27,9 @@ class ProcessTest extends TestCase
         );
     }
 
-    public function testProcessYearlyDates()
+    public function testSalaryControllerYearlyDates()
     {
-        $result = $this->process->prepareYearlyDates(2020)->toArray();
+        $result = $this->SalaryController->prepareYearlyDates(2020)->toArray();
 
         $this->assertSame(
             count($result),
@@ -45,8 +45,8 @@ class ProcessTest extends TestCase
             4 => 'April',
             5 => 'May',
         ];
-        $this->process->setMonths($months);
-        $result = $this->process->getMonths();
+        $this->SalaryController->setMonths($months);
+        $result = $this->SalaryController->getMonths();
 
         $this->assertSame(
             $result,

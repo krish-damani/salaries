@@ -11,7 +11,7 @@ use DateTime;
  * @author Dinesh Rabara <d.rabara@easternenterprise.com>
  */
 
-class Service
+class DateCalculatorService
 {
     /**
      * bonusDay

@@ -5,9 +5,9 @@ namespace Salaries\Controller;
 use DateTime;
 use Salaries\Model\Salary;
 use Salaries\Service\Parse;
-use Salaries\Service\Service;
+use Salaries\Service\DateCalculatorService;
 
-class Process
+class SalaryController
 {
     use parse;
     private $months = [
@@ -27,7 +27,7 @@ class Process
     private $service;
     private $model;
 
-    public function __construct(Service $service, Salary $model)
+    public function __construct(DateCalculatorService $service, Salary $model)
     {
         $this->service = $service;
         $this->model = $model;

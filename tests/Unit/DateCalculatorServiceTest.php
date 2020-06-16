@@ -6,15 +6,15 @@ namespace Tests\Unit;
 
 use DateTime as DateTime;
 use PHPUnit\Framework\TestCase;
-use Salaries\Service\Service;
+use Salaries\Service\DateCalculatorService;
 
-class ServiceTest extends TestCase
+class DateCalculatorServiceTest extends TestCase
 {
     protected $service;
 
     protected function setUp(): void
     {
-        $this->service = new Service();
+        $this->service = new DateCalculatorService();
     }
     public function testProcessMethod()
     {
