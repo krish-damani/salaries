@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Test for salary model
+ *
+ * @author Dinesh Rabara <d.rabara@easternenterprise.com>
+ */
 declare (strict_types = 1);
 
 namespace Tests\Unit;
@@ -9,6 +13,11 @@ use Salaries\Model\Salary;
 
 class ModelTest extends TestCase
 {
+    /**
+     * test setFields method and it's output
+     *
+     * @return void
+     */
     public function testSetFieldMethod()
     {
         $model = new Salary();
