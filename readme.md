@@ -113,3 +113,26 @@ Convert CSV/Array
 |October-2020|30-10-2020|15-10-2020|
 |November-2020|30-11-2020|18-11-2020|
 |December-2020|31-12-2020|15-12-2020|
+
+### Test Coverage
+
+* Contracts (Tests\Unit\Contracts)
+  * Date calculator interface
+  * Export output interface
+  * Salary model interface
+
+* Date Calculator Service (Tests\Unit\DateCalculatorService)
+  * Process dates method
+  * Set bonus day
+  * Set weekend days
+  * Set date format
+
+* Model (Tests\Unit\Model)
+  * Set field method
+
+* Salary Controller (Tests\Feature\SalaryController)
+  * Salary controller monthly date
+  * Check month end date is weekend
+  * Check month bonus date is weekend
+  * Salary controller yearly dates
+  * Set month
