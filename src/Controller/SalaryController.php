@@ -4,6 +4,7 @@ namespace Salaries\Controller;
 
 use DateTime;
 use Salaries\Contracts\DateCalculatorInterface;
+use Salaries\Contracts\SalaryModelInterface;
 use Salaries\Model\Salary;
 use Salaries\Service\Parse;
 
@@ -27,7 +28,7 @@ class SalaryController
     private $service;
     private $model;
 
-    public function __construct(DateCalculatorInterface $service, Salary $model)
+    public function __construct(DateCalculatorInterface $service, SalaryModelInterface $model)
     {
         $this->service = $service;
         $this->model = $model;
@@ -88,7 +89,7 @@ class SalaryController
      * @param  DateCalculatorInterface $service
      * @return void
      */
-    public function setService(DateCalculatorInterface $service)
+    public function setService(DateCalculatorInterface $service): void
     {
         $this->service = $service;
     }
@@ -96,10 +97,10 @@ class SalaryController
     /**
      * setModel
      *
-     * @param  New Model $model
+     * @param  SalaryModelInterface $model
      * @return void
      */
-    public function setModel($model)
+    public function setModel(SalaryModelInterface $model): void
     {
         $this->model = $model;
     }

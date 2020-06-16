@@ -2,7 +2,9 @@
 
 namespace Salaries\Model;
 
-class Salary
+use Salaries\Contracts\SalaryModelInterface;
+
+class Salary implements SalaryModelInterface
 {
     public $month;
     public $paymentDate;
